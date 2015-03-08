@@ -10,9 +10,10 @@ import com.massivecraft.massivecore.util.TimeDiffUtil;
 import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivecore.util.Txt;
 
-import dk.muj.derius.api.DPlayer;
-import dk.muj.derius.api.Skill;
-import dk.muj.derius.entity.ability.DeriusAbility;
+import dk.muj.derius.api.ability.DeriusAbility;
+import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.api.skill.Skill;
+import dk.muj.derius.api.util.AbilityUtil;
 import dk.muj.derius.req.ReqCooldownIsExpired;
 
 public class SuperDigging extends DeriusAbility
@@ -75,10 +76,10 @@ public class SuperDigging extends DeriusAbility
 	@Override
 	public Object onActivate(DPlayer dplayer, Object other)
 	{
-		if ( ! dplayer.isPlayer()) return null;
+		if ( ! dplayer.isPlayer()) return AbilityUtil.CANCEL;
 		Player player = dplayer.getPlayer();
 		ItemStack inHand = player.getItemInHand();
-		if (inHand == null || inHand.getType() == Material.AIR) return null;
+		if (inHand == null || inHand.getType() == Material.AIR) return AbilityUtil.CANCEL;
 		
 		SuperDiggingItemManager.get().toSpecial(inHand);
 		

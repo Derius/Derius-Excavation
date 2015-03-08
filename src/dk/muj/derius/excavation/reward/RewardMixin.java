@@ -5,7 +5,7 @@ import java.util.List;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
-import dk.muj.derius.api.DPlayer;
+import dk.muj.derius.api.player.DPlayer;
 
 public interface RewardMixin
 {

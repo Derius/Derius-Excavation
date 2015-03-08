@@ -6,11 +6,12 @@ import java.util.Set;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.xlib.gson.reflect.TypeToken;
 
-import dk.muj.derius.entity.skill.DeriusSkill;
+import dk.muj.derius.api.skill.DeriusSkill;
 import dk.muj.derius.excavation.reward.Reward;
 
 public class ExcavationSkill extends DeriusSkill
@@ -66,6 +67,13 @@ public class ExcavationSkill extends DeriusSkill
 		return "derius:excavation";
 	}
 	
+
+	@Override
+	public Plugin getPlugin()
+	{
+		return DeriusExcavation.get();
+	}
+	
 	// -------------------------------------------- //
 	// CONFIG
 	// -------------------------------------------- //
@@ -94,4 +102,5 @@ public class ExcavationSkill extends DeriusSkill
 	{
 		return get().readConfig(Const.JSON_REWARDS, new TypeToken<List<Reward>>(){});
 	}
+
 }

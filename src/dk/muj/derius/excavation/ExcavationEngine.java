@@ -1,5 +1,6 @@
 package dk.muj.derius.excavation;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -16,10 +17,10 @@ import org.bukkit.plugin.Plugin;
 import com.massivecraft.massivecore.EngineAbstract;
 import com.massivecraft.massivecore.util.MUtil;
 
-import dk.muj.derius.api.DPlayer;
 import dk.muj.derius.api.DeriusAPI;
 import dk.muj.derius.api.VerboseLevel;
-import dk.muj.derius.util.AbilityUtil;
+import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.api.util.AbilityUtil;
 
 public class ExcavationEngine extends EngineAbstract
 {
@@ -71,8 +72,11 @@ public class ExcavationEngine extends EngineAbstract
 		}
 		
 		// Rewards
-		DeriusExcavation.getRewardMixin().getRewards(dplayer, block).forEach( item -> 
-			block.getWorld().dropItem(block.getLocation(), item));
+		List<ItemStack> items = DeriusExcavation.getRewardMixin().getRewards(dplayer, block);
+		if (AbilityUtil.activateAbility(dplayer, TreasureDigging.get(), items, VerboseLevel.ALWAYS) != AbilityUtil.CANCEL)
+		{
+			items.forEach(item -> block.getWorld().dropItemNaturally(block.getLocation(), item));
+		}
 		
 		// Exp gain
 		Map<Material, Integer> expGain = ExcavationSkill.getExpGain();

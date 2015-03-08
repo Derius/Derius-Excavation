@@ -6,10 +6,11 @@ import org.bukkit.event.player.PlayerItemDamageEvent;
 
 import com.massivecraft.massivecore.util.MUtil;
 
-import dk.muj.derius.api.DPlayer;
-import dk.muj.derius.api.Skill;
-import dk.muj.derius.entity.ability.DeriusAbility;
-import dk.muj.derius.util.LevelUtil;
+import dk.muj.derius.api.ability.DeriusAbility;
+import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.api.skill.Skill;
+import dk.muj.derius.api.util.AbilityUtil;
+import dk.muj.derius.api.util.LevelUtil;
 
 public class CarefulDigging extends DeriusAbility
 {
@@ -57,13 +58,13 @@ public class CarefulDigging extends DeriusAbility
 	@Override
 	public Object onActivate(DPlayer dplayer, Object other)
 	{
-		if ( ! (other instanceof PlayerItemDamageEvent))return null;
+		if ( ! (other instanceof PlayerItemDamageEvent))return AbilityUtil.CANCEL;
 		PlayerItemDamageEvent event = (PlayerItemDamageEvent) other;
 		
 		
 		int level = dplayer.getLvl(this.getSkill());
 		OptionalDouble optMultiplier = LevelUtil.getLevelSettingFloat(ExcavationSkill.getDurabilityMultiplier(), level);
-		if ( ! optMultiplier.isPresent()) return null;
+		if ( ! optMultiplier.isPresent()) return AbilityUtil.CANCEL;
 		double multiplier = optMultiplier.getAsDouble();
 		
 		// EXAMPLES: 1 / 3 = 0.333 so if multiplier is 3 in every third case damage occurs

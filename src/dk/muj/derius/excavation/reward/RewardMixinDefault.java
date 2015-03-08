@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivecore.util.MUtil;
 
-import dk.muj.derius.api.DPlayer;
+import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.excavation.ExcavationSkill;
 
 public class RewardMixinDefault implements RewardMixin
