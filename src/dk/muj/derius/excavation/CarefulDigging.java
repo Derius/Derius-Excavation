@@ -6,13 +6,13 @@ import org.bukkit.event.player.PlayerItemDamageEvent;
 
 import com.massivecraft.massivecore.util.MUtil;
 
-import dk.muj.derius.api.ability.DeriusAbility;
+import dk.muj.derius.api.ability.AbilityAbstract;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.skill.Skill;
 import dk.muj.derius.api.util.AbilityUtil;
 import dk.muj.derius.api.util.LevelUtil;
 
-public class CarefulDigging extends DeriusAbility
+public class CarefulDigging extends AbilityAbstract
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
