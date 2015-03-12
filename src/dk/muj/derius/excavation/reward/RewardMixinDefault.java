@@ -35,8 +35,14 @@ public class RewardMixinDefault implements RewardMixin
 		
 		for (Reward reward : ExcavationSkill.getRewards())
 		{
-			if ( ! reward.getBlocksToGetFrom().contains(type)) continue;
+			// Level must match
 			if (reward.getMinimumLevel() > dplayer.getLvl(ExcavationSkill.get())) continue;
+			if (reward.getMaximumLevel() < dplayer.getLvl(ExcavationSkill.get())) continue;
+			
+			// Broken block must match reward
+			if ( ! reward.getBlocksToGetFrom().contains(type)) continue;
+			
+			// And they must be lucky.
 			if (MUtil.probabilityRound(reward.getChance()) == 0) continue;
 			
 			ret.add(reward.getItem());

@@ -6,7 +6,7 @@ public class Const
 	// BASENAME
 	// -------------------------------------------- //
 	
-	public static final String BASENAME = "derius_parkour";
+	public static final String BASENAME = "derius_fishing";
 	public static final String BASENAME_ = BASENAME + "_";
 	
 	// -------------------------------------------- //

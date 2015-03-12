@@ -53,7 +53,7 @@ public class ExcavationSkill extends SkillAbstract
 				2000, 3.0), new TypeToken<Map<Integer, Double>>(){});
 		
 		this.writeConfig(Const.JSON_REWARDS, MUtil.list(
-				new Reward(new ItemStack(Material.GLOWSTONE_DUST), 1, 25, 0.01, MUtil.list(Material.SAND, Material.DIRT))
+				new Reward(new ItemStack(Material.GLOWSTONE_DUST), 25, 3000, 0.01, MUtil.list(Material.SAND, Material.DIRT))
 				), new TypeToken<List<Reward>>(){});
 	}
 	
@@ -95,7 +95,7 @@ public class ExcavationSkill extends SkillAbstract
 	
 	public static Map<Integer, Double> getDurabilityMultiplier()
 	{
-		return get().readConfig(Const.JSON_SUPER_DIGGING_BLOCKS, new TypeToken<Map<Integer, Double>>(){});
+		return get().readConfig(Const.JSON_CAREFUL_DIGGING, new TypeToken<Map<Integer, Double>>(){});
 	}
 	
 	public static List<Reward> getRewards()
