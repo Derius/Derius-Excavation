@@ -30,22 +30,9 @@ public class TreasureDigging extends AbilityAbstract
 		return "derius:excavation:treasure";
 	}
 
-	@Override
-	public String getLvlDescriptionMsg(int lvl)
-	{
-		return null;
-	}
+	@Override public String getLvlDescriptionMsg(int lvl) { return null; }
 
-	@Override
-	public Object onActivate(DPlayer dplayer, Object other)
-	{
-		return null;
-	}
-
-	@Override
-	public void onDeactivate(DPlayer dplayer, Object other)
-	{
-
-	}
+	@Override public Object onActivate(DPlayer dplayer, Object other) { return null; }
+	@Override public void onDeactivate(DPlayer dplayer, Object other) { }
 
 }

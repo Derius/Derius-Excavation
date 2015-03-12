@@ -91,10 +91,8 @@ public class ExcavationEngine extends EngineAbstract
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void changeDurability(PlayerItemDamageEvent event)
 	{
-		ItemStack item = event.getItem();
-		if ( ! MUtil.isPickaxe(item)) return;
 		DPlayer dplayer = DeriusAPI.getDPlayer(event.getPlayer());
 		AbilityUtil.activateAbility(dplayer, CarefulDigging.get(), event, VerboseLevel.ALWAYS);
-		
 	}
+	
 }
