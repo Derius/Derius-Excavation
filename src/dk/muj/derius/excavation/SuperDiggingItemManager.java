@@ -2,9 +2,9 @@ package dk.muj.derius.excavation;
 
 import org.bukkit.enchantments.Enchantment;
 
-import dk.muj.derius.api.inventory.SpecialItemManagerDefault;
+import dk.muj.derius.api.inventory.SpecialItemManagerEnchant;
 
-public class SuperDiggingItemManager extends SpecialItemManagerDefault
+public class SuperDiggingItemManager extends SpecialItemManagerEnchant
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT

@@ -1,10 +1,14 @@
 package dk.muj.derius.excavation;
 
+import java.util.Collection;
+
+import org.bukkit.Material;
+
+import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 
 import dk.muj.derius.api.ability.AbilitySpecialItem;
 import dk.muj.derius.api.inventory.SpecialItemManager;
-import dk.muj.derius.api.req.ReqCooldownIsExpired;
 import dk.muj.derius.api.skill.Skill;
 
 public class SuperDigging extends AbilitySpecialItem
@@ -21,10 +25,6 @@ public class SuperDigging extends AbilitySpecialItem
 		this.setDesc("Digs faster");
 		
 		this.setName("Super Digging");
-		
-		this.setType(AbilityType.ACTIVE);
-		
-		this.addActivateRequirements(ReqCooldownIsExpired.get());
 	}
 	
 	// -------------------------------------------- //
@@ -53,6 +53,18 @@ public class SuperDigging extends AbilitySpecialItem
 	public SpecialItemManager getSpecialItemManager()
 	{
 		return SuperDiggingItemManager.get();
+	}
+
+	@Override
+	public Collection<Material> getToolTypes()
+	{
+		return MUtil.SPADE_MATERIALS;
+	}
+
+	@Override
+	public Collection<Material> getBlockTypes()
+	{
+		return ExcavationSkill.getSuperDiggingBlocks();
 	}
 
 }

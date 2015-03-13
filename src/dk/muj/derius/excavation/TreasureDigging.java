@@ -1,5 +1,7 @@
 package dk.muj.derius.excavation;
 
+import java.util.Optional;
+
 import dk.muj.derius.api.ability.AbilityAbstract;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.skill.Skill;
@@ -30,7 +32,7 @@ public class TreasureDigging extends AbilityAbstract
 		return "derius:excavation:treasure";
 	}
 
-	@Override public String getLvlDescriptionMsg(int lvl) { return null; }
+	@Override public Optional<String> getLvlDescriptionMsg(int lvl) { return Optional.empty(); }
 
 	@Override public Object onActivate(DPlayer dplayer, Object other) { return null; }
 	@Override public void onDeactivate(DPlayer dplayer, Object other) { }

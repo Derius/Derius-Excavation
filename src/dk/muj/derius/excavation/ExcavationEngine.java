@@ -2,7 +2,6 @@ package dk.muj.derius.excavation;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -10,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
@@ -48,10 +46,7 @@ public class ExcavationEngine extends EngineAbstract
 	
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void blockBreakThingy(BlockBreakEvent event)
-	{
-		// Just in case
-		if (event == null) return;
-		
+	{	
 		// Get objects
 		Player player = event.getPlayer();
 		DPlayer dplayer = DeriusAPI.getDPlayer(player);
@@ -62,15 +57,7 @@ public class ExcavationEngine extends EngineAbstract
 		// Checks
 		if ( ! MUtil.isSpade(inHand)) return;
 		if (DeriusAPI.isBlockPlacedByPlayer(block)) return;
-		
-		// Super Digging
-		Optional<Material> optPrepared = dplayer.getPreparedTool();
-		// If this block type can activate super mining. They have prepared a toll & it is a pickaxe.
-		if (ExcavationSkill.getSuperDiggingBlocks().contains(type) && optPrepared.isPresent() && MUtil.SPADE_MATERIALS.contains(optPrepared.get()))
-		{
-			AbilityUtil.activateAbility(dplayer, SuperDigging.get(), null, VerboseLevel.LOW);
-		}
-		
+
 		// Rewards
 		List<ItemStack> items = DeriusExcavation.getRewardMixin().getRewards(dplayer, block);
 		if (AbilityUtil.activateAbility(dplayer, TreasureDigging.get(), items, VerboseLevel.ALWAYS) != AbilityUtil.CANCEL)
@@ -87,12 +74,5 @@ public class ExcavationEngine extends EngineAbstract
 		
 		return;
 	}
-	
-	@EventHandler(priority = EventPriority.NORMAL)
-	public void changeDurability(PlayerItemDamageEvent event)
-	{
-		DPlayer dplayer = DeriusAPI.getDPlayer(event.getPlayer());
-		AbilityUtil.activateAbility(dplayer, CarefulDigging.get(), event, VerboseLevel.ALWAYS);
-	}
-	
+
 }
