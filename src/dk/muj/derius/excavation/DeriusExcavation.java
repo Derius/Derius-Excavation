@@ -6,7 +6,6 @@ import com.massivecraft.massivecore.util.MUtil;
 import dk.muj.derius.api.DeriusAPI;
 import dk.muj.derius.excavation.reward.RewardMixin;
 import dk.muj.derius.excavation.reward.RewardMixinDefault;
-import dk.muj.derius.util.Listener;
 
 public class DeriusExcavation extends MassivePlugin
 {
@@ -39,7 +38,7 @@ public class DeriusExcavation extends MassivePlugin
 		SuperDigging.get().register();
 		CarefulDigging.get().register();
 		
-		Listener.registerTools(MUtil.SPADE_MATERIALS);
+		DeriusAPI.registerPreparableTools(MUtil.SPADE_MATERIALS);
 		DeriusAPI.getBlockMixin().addBlockTypesToListenFor(ExcavationSkill.getExpGain().keySet());
 		
 		this.postEnable();
