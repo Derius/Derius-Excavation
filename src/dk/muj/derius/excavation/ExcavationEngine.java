@@ -1,7 +1,6 @@
 package dk.muj.derius.excavation;
 
 import java.util.List;
-import java.util.Map;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -63,13 +62,6 @@ public class ExcavationEngine extends EngineAbstract
 		if (AbilityUtil.activateAbility(dplayer, TreasureDigging.get(), items, VerboseLevel.ALWAYS) != AbilityUtil.CANCEL)
 		{
 			items.forEach(item -> block.getWorld().dropItemNaturally(block.getLocation(), item));
-		}
-		
-		// Exp gain
-		Map<Material, Integer> expGain = ExcavationSkill.getExpGain();
-		if (expGain.containsKey(type))
-		{
-			dplayer.addExp(ExcavationSkill.get(), expGain.get(type));
 		}
 		
 		return;

@@ -38,6 +38,7 @@ public final class DeriusExcavation extends MassivePlugin
 		SuperDigging.get().register();
 		CarefulDigging.get().register();
 		
+		DeriusAPI.registerExpGain(ExcavationExpGain.get());
 		DeriusAPI.registerPreparableTools(MUtil.SPADE_MATERIALS);
 		DeriusAPI.getBlockMixin().addBlockTypesToListenFor(ExcavationSkill.getExpGain().keySet());
 		
