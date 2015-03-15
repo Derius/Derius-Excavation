@@ -7,7 +7,7 @@ import dk.muj.derius.api.DeriusAPI;
 import dk.muj.derius.excavation.reward.RewardMixin;
 import dk.muj.derius.excavation.reward.RewardMixinDefault;
 
-public class DeriusExcavation extends MassivePlugin
+public final class DeriusExcavation extends MassivePlugin
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
@@ -15,7 +15,7 @@ public class DeriusExcavation extends MassivePlugin
 	
 	private static DeriusExcavation i;
 	public static DeriusExcavation get() { return i; }
-	public DeriusExcavation() { i = this; }
+	private DeriusExcavation() { i = this; }
 	
 	// -------------------------------------------- //
 	// REWARD MIXIN
