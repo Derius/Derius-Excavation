@@ -15,7 +15,7 @@ public final class DeriusExcavation extends MassivePlugin
 	
 	private static DeriusExcavation i;
 	public static DeriusExcavation get() { return i; }
-	private DeriusExcavation() { i = this; }
+	public DeriusExcavation() { i = this; }
 	
 	// -------------------------------------------- //
 	// REWARD MIXIN
