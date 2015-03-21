@@ -2,7 +2,6 @@ package dk.muj.derius.excavation;
 
 import java.util.List;
 
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -40,7 +39,7 @@ public class ExcavationEngine extends EngineAbstract
 	}
 
 	// -------------------------------------------- //
-	// EVENT
+	// LISTENER
 	// -------------------------------------------- //
 	
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -49,12 +48,10 @@ public class ExcavationEngine extends EngineAbstract
 		// Get objects
 		Player player = event.getPlayer();
 		DPlayer dplayer = DeriusAPI.getDPlayer(player);
-		ItemStack inHand = player.getItemInHand();
 		Block block = event.getBlock();
-		Material type = block.getType();
 		
 		// Checks
-		if ( ! MUtil.isSpade(inHand)) return;
+		if ( ! MUtil.isSpade(event)) return;
 		if (DeriusAPI.isBlockPlacedByPlayer(block)) return;
 
 		// Rewards

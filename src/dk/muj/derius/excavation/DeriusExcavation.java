@@ -37,6 +37,7 @@ public final class DeriusExcavation extends MassivePlugin
 		ExcavationSkill.get().register();
 		SuperDigging.get().register();
 		CarefulDigging.get().register();
+		TreasureDigging.get().register();
 		
 		DeriusAPI.registerExpGain(ExcavationExpGain.get());
 		DeriusAPI.registerPreparableTools(MUtil.SPADE_MATERIALS);

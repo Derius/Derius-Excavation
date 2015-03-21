@@ -1,6 +1,11 @@
 package dk.muj.derius.excavation;
 
+import java.util.Collection;
+
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+
+import com.massivecraft.massivecore.util.MUtil;
 
 import dk.muj.derius.api.inventory.SpecialItemManagerEnchant;
 
@@ -17,6 +22,12 @@ public class SuperDiggingItemManager extends SpecialItemManagerEnchant
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
+	
+	@Override
+	public Collection<Material> getToolTypes()
+	{
+		return MUtil.SPADE_MATERIALS;
+	}
 	
 	@Override
 	public String getLoreTag()
